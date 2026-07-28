@@ -27,17 +27,18 @@ YF_MAP = {
 }
 
 HTML_TEMPLATE = """<!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Market Signal AI - Pro Glassmorphic UI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Orbitron:wght@600;800;900&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Premium Fonts Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #050811;
             --card-bg: rgba(15, 23, 42, 0.75);
-            --card-border: rgba(0, 242, 254, 0.15);
+            --card-border: rgba(0, 242, 254, 0.18);
             --neon-cyan: #00f2fe;
             --neon-blue: #4facfe;
             --green-glow: #00e676;
@@ -47,11 +48,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             --text-sub: #94a3b8;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -95,13 +97,14 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             background: rgba(0, 230, 118, 0.1);
             border: 1px solid rgba(0, 230, 118, 0.3);
             color: var(--green-glow);
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
         }
 
         .dot {
@@ -120,18 +123,23 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         .header h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 20px;
+            font-size: 21px;
             font-weight: 900;
             background: linear-gradient(135deg, #ffffff 0%, #00f2fe 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         .header p {
-            font-size: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
             color: var(--text-sub);
-            margin-top: 4px;
+            letter-spacing: 0.8px;
+            margin-top: 6px;
+            text-transform: uppercase;
         }
 
         .form-group {
@@ -140,12 +148,13 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         .form-group label {
             display: block;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 11px;
             font-weight: 700;
             color: var(--text-sub);
             margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
         }
 
         .select-box {
@@ -155,7 +164,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 14px;
             color: #fff;
-            font-size: 14px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
             font-weight: 700;
             outline: none;
             cursor: pointer;
@@ -181,19 +191,19 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             border: none;
             border-radius: 14px;
             color: #030712;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 15px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.35);
         }
 
         .btn-analyze:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.5);
+            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.55);
             filter: brightness(1.1);
         }
 
@@ -239,8 +249,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             margin-bottom: 18px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px currentColor;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 12px currentColor;
         }
 
         .signal-call {
@@ -277,17 +287,21 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         }
 
         .metric-label {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 10px;
             color: var(--text-sub);
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .metric-value {
+            font-family: 'Orbitron', sans-serif;
             font-size: 14px;
             font-weight: 800;
             color: #fff;
+            letter-spacing: 0.5px;
         }
 
         .accuracy-badge {
@@ -309,13 +323,24 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             font-size: 12px;
             line-height: 1.6;
             color: #cbd5e1;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .reason-card strong {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            color: var(--neon-cyan);
         }
 
         .footer-note {
             text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 11px;
+            font-weight: 600;
             color: #475569;
             margin-top: 20px;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -329,7 +354,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     </div>
 
     <div class="form-group">
-        <label>ক্যারেন্সি পেয়ার নির্বাচন করুন (Pair)</label>
+        <label>SELECT ASSET PAIR</label>
         <select id="pairSelect" class="select-box">
             {% for pair in pairs %}
                 <option value="{{ pair }}">{{ pair }}</option>
@@ -338,7 +363,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     </div>
 
     <div class="form-group">
-        <label>টাইমফ্রেম (Timeframe)</label>
+        <label>SELECT TIMEFRAME</label>
         <select id="tfSelect" class="select-box">
             <option value="1m">1 MINUTE</option>
             <option value="5m">5 MINUTES</option>
@@ -350,8 +375,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     <div class="loader" id="loader">
         <div class="spinner"></div>
-        <p style="font-size: 12px; color: var(--text-sub); margin-top: 12px; font-weight: 600;">
-            ৪-লেয়ার অ্যালগরিদম স্ক্যানিং চলছে...
+        <p style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; color: var(--text-sub); margin-top: 12px; font-weight: 600; letter-spacing: 0.5px;">
+            Scanning 4-Layer Institutional Logic...
         </p>
     </div>
 
@@ -362,30 +387,30 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         <div class="metrics-grid">
             <div class="metric-box">
-                <div class="metric-label">এন্ট্রি সময় (BD)</div>
+                <div class="metric-label">ENTRY TIME (BD)</div>
                 <div class="metric-value" id="resTime">--:--:--</div>
             </div>
             <div class="metric-box">
-                <div class="metric-label">একুরেসি স্কোর</div>
+                <div class="metric-label">ACCURACY SCORE</div>
                 <div class="metric-value"><span class="accuracy-badge" id="resScore">0%</span></div>
             </div>
             <div class="metric-box">
-                <div class="metric-label">লাইভ প্রাইস</div>
+                <div class="metric-label">LIVE PRICE</div>
                 <div class="metric-value" id="resPrice" style="color: var(--neon-cyan);">--</div>
             </div>
             <div class="metric-box">
-                <div class="metric-label">ফিল্টার স্ট্যাটাস</div>
-                <div class="metric-value" id="resStatus" style="font-size: 12px;">--</div>
+                <div class="metric-label">FILTER STATUS</div>
+                <div class="metric-value" id="resStatus" style="font-size: 12px; font-family: 'Space Grotesk', sans-serif; font-weight: 700;">--</div>
             </div>
         </div>
 
         <div class="reason-card" id="resReason">
-            অ্যানালিসিস রেজাল্ট...
+            Analysis Summary...
         </div>
     </div>
 
     <div class="footer-note">
-        ⚠️ ৮৫%+ কনফ্লুয়েন্স পারফেকশন না থাকলে ফিল্টার সরাসরি ট্রেড স্থগিত করবে।
+        ⚠️ Strict Filter: Trades auto-pause if confluence is below 85%.
     </div>
 </div>
 
@@ -410,7 +435,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             loader.style.display = 'none';
             
             if(data.error) {
-                alert('মার্কেট ডাটা পেতে সমস্যা হয়েছে: ' + data.error);
+                alert('Market Data Error: ' + data.error);
                 return;
             }
             
@@ -419,7 +444,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             document.getElementById('resPrice').innerText = data.price;
             document.getElementById('resStatus').innerText = data.status;
             document.getElementById('resScore').innerText = data.confidence + '%';
-            document.getElementById('resReason').innerHTML = '<strong>📊 লজিক্যাল বিশ্লেষণ সামারি:</strong><br>' + data.reason;
+            document.getElementById('resReason').innerHTML = '<strong>LOGICAL ANALYSIS SUMMARY:</strong><br>' + data.reason;
             
             const signalBox = document.getElementById('signalBox');
             const signalText = document.getElementById('signalText');
@@ -435,7 +460,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 signalText.innerText = '⚠️ NO TRADE / WAIT';
             }
         } catch (err) {
-            alert('সার্ভারে কানেক্ট হতে সমস্যা হচ্ছে!');
+            alert('Server connection error!');
             loader.style.display = 'none';
         }
     }
@@ -453,7 +478,7 @@ def perform_4layer_analysis(symbol, timeframe):
 
         df = yf.download(tickers=yf_symbol, period=period, interval=interval, progress=False)
         if df.empty or len(df) < 50:
-            return {"error": "পর্যাপ্ত ক্যান্ডেলস্টিক ডাটা পাওয়া যায়নি।"}
+            return {"error": "Insufficient candlestick data found."}
 
         if isinstance(df.columns, pd.MultiIndex):
             df = df.xs(yf_symbol, axis=1, level=1)
@@ -502,34 +527,34 @@ def perform_4layer_analysis(symbol, timeframe):
         # Layer 1 Scoring (25%)
         if ema20 > ema50:
             call_score += 25
-            reasons.append("EMA 20/50 অনুযায়ী মার্কেট আপট্রেন্ডে রয়েছে")
+            reasons.append("Market is in Uptrend based on EMA 20/50")
         else:
             put_score += 25
-            reasons.append("EMA 20/50 অনুযায়ী মার্কেট ডাউনট্রেন্ডে রয়েছে")
+            reasons.append("Market is in Downtrend based on EMA 20/50")
 
         # Layer 2 Scoring (25%)
         if near_support:
             call_score += 25
-            reasons.append("মেজর সাপোর্ট লেভেল (Swing Low) থেকে প্রাইস রিজেকশন নিয়েছে")
+            reasons.append("Price rejected from Major Support Level (Swing Low)")
         if near_resistance:
             put_score += 25
-            reasons.append("মেজর রেজিস্ট্যান্স লেভেল (Swing High) থেকে প্রাইস রিজেকশন নিয়েছে")
+            reasons.append("Price rejected from Major Resistance Level (Swing High)")
 
         # Layer 3 Scoring (25%)
         if is_bull_engulfing or is_hammer:
             call_score += 25
-            reasons.append("বুলিশ রিভার্সাল ক্যান্ডেলস্টিক প্যাট্যার্ন (Bullish Engulfing/Hammer) গঠিত হয়েছে")
+            reasons.append("Bullish Reversal Pattern formed (Bullish Engulfing/Hammer)")
         if is_bear_engulfing or is_star:
             put_score += 25
-            reasons.append("বেয়ারিশ রিভার্সাল ক্যান্ডেলস্টিক প্যাট্যার্ন (Bearish Engulfing/Shooting Star) গঠিত হয়েছে")
+            reasons.append("Bearish Reversal Pattern formed (Bearish Engulfing/Shooting Star)")
 
         # Layer 4 Scoring (25%)
         if rsi < 38 or curr_close <= bb_lower:
             call_score += 25
-            reasons.append("RSI ওভারসোল্ড জোন বা বোলিঙ্গার ব্যান্ডের লোয়ার ব্যান্ডে সাপোর্ট নিয়েছে")
+            reasons.append("RSI Oversold zone or Bollinger Bands lower band support")
         if rsi > 62 or curr_close >= bb_upper:
             put_score += 25
-            reasons.append("RSI ওভারবট জোন বা বোলিঙ্গার ব্যান্ডের আপার ব্যান্ডে রেজিস্ট্যান্স নিয়েছে")
+            reasons.append("RSI Overbought zone or Bollinger Bands upper band resistance")
 
         # Strict 85% Confluence Filter Rule
         if call_score >= 85 and call_score > put_score:
@@ -546,7 +571,7 @@ def perform_4layer_analysis(symbol, timeframe):
             direction = "WAIT"
             confidence = max(call_score, put_score)
             status = "FILTERED (<85%)"
-            final_reason = "মার্কেটে ৪-লেয়ার লজিকের ৮৫% কনফ্লুয়েন্স পূর্ণ হয়নি। ঝুঁকিমুক্ত থাকার জন্য ট্রেড বন্ধ রাখা হয়েছে।"
+            final_reason = "85% confluence not met across 4-layer logic. Trade paused to preserve capital."
 
         bd_tz = pytz.timezone('Asia/Dhaka')
         now = datetime.now(bd_tz)
