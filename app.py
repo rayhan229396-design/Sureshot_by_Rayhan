@@ -27,12 +27,12 @@ YF_MAP = {
 }
 
 HTML_TEMPLATE = """<!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Institutional Precision Signal AI v3.0</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Orbitron:wght@600;800;900&family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Orbitron:wght@600;800;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #070a11;
@@ -47,7 +47,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             --text-sub: #94a3b8;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         
         body {
             background-color: var(--bg-dark);
@@ -64,13 +64,13 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 460px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 24px;
             padding: 28px 22px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.05);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             position: relative;
             overflow: hidden;
         }
@@ -180,19 +180,21 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
             border: none;
             border-radius: 14px;
-            color: #000;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 15px;
-            font-weight: 900;
-            letter-spacing: 1px;
+            color: #050b14;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.25);
         }
 
         .btn-analyze:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 30px rgba(0, 242, 254, 0.45);
+            filter: brightness(1.1);
         }
 
         .loader {
@@ -275,11 +277,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         }
 
         .metric-label {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-sub);
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 4px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .metric-value {
@@ -314,6 +317,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             font-size: 11px;
             color: #475569;
             margin-top: 20px;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -321,13 +325,13 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
 <div class="container">
     <div class="header">
-        <div class="badge-live"><span class="dot"></span> Institutional Filter v3.0</div>
+        <div class="badge-live"><span class="dot"></span> Institutional Engine v3.0</div>
         <h1>PRECISION SIGNAL AI</h1>
         <p>MTF Alignment, ATR Volatility & MACD Engine</p>
     </div>
 
     <div class="form-group">
-        <label>ASSET PAIR (REAL MARKET)</label>
+        <label>ASSET PAIR</label>
         <select id="pairSelect" class="select-box">
             {% for pair in pairs %}
                 <option value="{{ pair }}">{{ pair }}</option>
@@ -338,9 +342,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="form-group">
         <label>TIMEFRAME</label>
         <select id="tfSelect" class="select-box">
-            <option value="1m">1 MINUTE (M1)</option>
-            <option value="5m">5 MINUTES (M5)</option>
-            <option value="15m">15 MINUTES (M15)</option>
+            <option value="1m">1 MINUTE</option>
+            <option value="5m">5 MINUTES</option>
+            <option value="15m">15 MINUTES</option>
         </select>
     </div>
 
@@ -348,8 +352,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     <div class="loader" id="loader">
         <div class="spinner"></div>
-        <p style="font-size: 13px; color: var(--text-sub); margin-top: 12px; font-weight: 600;">
-            ৫-লেয়ার টেকনিক্যাল ফিল্টার ফিল্টারিং হচ্ছে...
+        <p style="font-size: 12px; color: var(--text-sub); margin-top: 12px; font-weight: 600; letter-spacing: 0.5px;">
+            Analyzing 5-Layer Technical Confluence...
         </p>
     </div>
 
@@ -360,30 +364,30 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         <div class="metrics-grid">
             <div class="metric-box">
-                <div class="metric-label">এন্ট্রি টাইম (BD TIME)</div>
+                <div class="metric-label">ENTRY TIME (BD)</div>
                 <div class="metric-value" id="resTime">--:--:--</div>
             </div>
             <div class="metric-box">
-                <div class="metric-label">কনফিডেন্স স্কোর</div>
+                <div class="metric-label">CONFIDENCE SCORE</div>
                 <div class="metric-value"><span class="accuracy-badge" id="resScore">0%</span></div>
             </div>
             <div class="metric-box">
-                <div class="metric-label">লাইভ প্রাইস</div>
+                <div class="metric-label">LIVE PRICE</div>
                 <div class="metric-value" id="resPrice" style="color: var(--accent-cyan);">--</div>
             </div>
             <div class="metric-box">
-                <div class="metric-label">M15 ট্রেন্ড ফিল্টার</div>
+                <div class="metric-label">M15 TREND</div>
                 <div class="metric-value" id="resMtf" style="font-size: 12px;">--</div>
             </div>
         </div>
 
         <div class="reason-card" id="resReason">
-            বিশ্লেষণ বিস্তারিত...
+            Analysis Breakdown...
         </div>
     </div>
 
     <div class="footer-note">
-        Strict Execution: Min 85%+ Confluence Score Required
+        Strict Execution: Min 80%+ Confluence Score Required
     </div>
 </div>
 
@@ -408,7 +412,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             loader.style.display = 'none';
             
             if(data.error) {
-                alert('মার্কেট ডাটা এরর: ' + data.error);
+                alert('Market Data Error: ' + data.error);
                 return;
             }
             
@@ -417,7 +421,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             document.getElementById('resPrice').innerText = data.price;
             document.getElementById('resMtf').innerText = data.mtf_trend;
             document.getElementById('resScore').innerText = data.confidence + '%';
-            document.getElementById('resReason').innerHTML = '<strong>💡 অ্যালগরিদম ফিল্টারিং রিপাবলিক:</strong><br>' + data.reason;
+            document.getElementById('resReason').innerHTML = '<strong>💡 ALGORITHM INSIGHTS:</strong><br>' + data.reason;
             
             const signalBox = document.getElementById('signalBox');
             const signalText = document.getElementById('signalText');
@@ -433,7 +437,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 signalText.innerText = '⚠️ NO TRADE / WAIT';
             }
         } catch (err) {
-            alert('সার্ভার সাড়া দিচ্ছে না! লিঙ্কটি চেক করুন।');
+            alert('Server is not responding! Please check connection.');
             loader.style.display = 'none';
         }
     }
@@ -452,7 +456,7 @@ def perform_precision_analysis(symbol, timeframe):
         # 1. Primary Timeframe Data
         df = yf.download(tickers=yf_symbol, period=period, interval=interval, progress=False)
         if df.empty or len(df) < 50:
-            return {"error": "যথেষ্ট ক্যান্ডেলস্টিক ডাটা পাওয়া যায়নি।"}
+            return {"error": "Insufficient candlestick data found."}
 
         if isinstance(df.columns, pd.MultiIndex):
             df = df.xs(yf_symbol, axis=1, level=1)
@@ -497,7 +501,7 @@ def perform_precision_analysis(symbol, timeframe):
                 "pair": symbol, "timeframe": timeframe, "price": round(curr_close, 5),
                 "entry_time": "--", "direction": "WAIT", "confidence": 0,
                 "mtf_trend": htf_trend,
-                "reason": "মার্কেট অত্যন্ত মন্থর/সাইডওয়েজ (Low ATR Volatility)। ভুয়া সিগন্যাল এড়াতে ট্রেড বন্ধ রাখা হলো।"
+                "reason": "Market is extremely slow/sideways (Low ATR Volatility). Trade paused to avoid false signals."
             }
 
         # S/R Swing Levels
@@ -523,42 +527,42 @@ def perform_precision_analysis(symbol, timeframe):
         # Rule A: MTF Alignment (25 Pts)
         if htf_trend == "BULLISH (UP)":
             call_score += 25
-            reasons.append("Higher Timeframe (M15) আপট্রেন্ডে রয়েছে")
+            reasons.append("Higher Timeframe (M15) is in Uptrend")
         else:
             put_score += 25
-            reasons.append("Higher Timeframe (M15) ডাউনট্রেন্ডে রয়েছে")
+            reasons.append("Higher Timeframe (M15) is in Downtrend")
 
         # Rule B: Trend & MACD Momentum (25 Pts)
         if ema20 > ema50 and macd_diff > 0:
             call_score += 25
-            reasons.append("EMA 20/50 & MACD মোমেন্টাম পজিটিভ")
+            reasons.append("EMA 20/50 & MACD Momentum is Positive")
         elif ema20 < ema50 and macd_diff < 0:
             put_score += 25
-            reasons.append("EMA 20/50 & MACD মোমেন্টাম নেগেটিভ")
+            reasons.append("EMA 20/50 & MACD Momentum is Negative")
 
         # Rule C: Support/Resistance (20 Pts)
         if near_support:
             call_score += 20
-            reasons.append("মেজর সাপোর্ট লেভেল রিজেকশন (Swing Low)")
+            reasons.append("Major Support Level Rejection (Swing Low)")
         if near_resistance:
             put_score += 20
-            reasons.append("মেজর রেজিস্ট্যান্স লেভেল রিজেকশন (Swing High)")
+            reasons.append("Major Resistance Level Rejection (Swing High)")
 
         # Rule D: Reversal Patterns (20 Pts)
         if is_bull_engulfing or is_hammer:
             call_score += 20
-            reasons.append("বুলিশ রিভার্সাল ক্যান্ডেলস্টিক স্ট্রাকচার")
+            reasons.append("Bullish Reversal Candlestick Structure")
         if is_bear_engulfing or is_star:
             put_score += 20
-            reasons.append("বেয়ারিশ রিভার্সাল ক্যান্ডেলস্টিক স্ট্রাকচার")
+            reasons.append("Bearish Reversal Candlestick Structure")
 
         # Rule E: RSI & Stochastic Confluence (10 Pts)
         if rsi < 38 and stoch_k < 25:
             call_score += 10
-            reasons.append("RSI & Stochastic উভয়ই ডাবল ওভারসোল্ড জোন")
+            reasons.append("RSI & Stochastic both in Double Oversold Zone")
         elif rsi > 62 and stoch_k > 75:
             put_score += 10
-            reasons.append("RSI & Stochastic উভয়ই ডাবল ওভারবট জোন")
+            reasons.append("RSI & Stochastic both in Double Overbought Zone")
 
         # Final Strict Decision Execution
         if call_score >= 80 and call_score > put_score:
@@ -572,7 +576,7 @@ def perform_precision_analysis(symbol, timeframe):
         else:
             direction = "WAIT"
             confidence = max(call_score, put_score)
-            final_reason = "মার্কেটে ৮০%+ কনফ্লুয়েন্স পারফেকশন পাওয়া যায়নি। লস এড়াতে ট্রেড বন্ধ রাখা হলো।"
+            final_reason = "80%+ confluence perfection not found. Trade paused to avoid loss."
 
         bd_tz = pytz.timezone('Asia/Dhaka')
         now = datetime.now(bd_tz)
