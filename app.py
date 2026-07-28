@@ -556,22 +556,23 @@ def perform_4layer_analysis(symbol, timeframe):
             put_score += 25
             reasons.append("RSI Overbought zone or Bollinger Bands upper band resistance")
 
-        # Strict 85% Confluence Filter Rule
-        if call_score >= 85 and call_score > put_score:
+                # Strict 75% Confluence Filter Rule
+        if call_score >= 75 and call_score > put_score:
             direction = "CALL"
             confidence = min(call_score + 10, 96)
-            status = "PASSED (85%+)"
+            status = "PASSED (75%+)"
             final_reason = " • ".join(reasons)
-        elif put_score >= 85 and put_score > call_score:
+        elif put_score >= 75 and put_score > call_score:
             direction = "PUT"
             confidence = min(put_score + 10, 96)
-            status = "PASSED (85%+)"
+            status = "PASSED (75%+)"
             final_reason = " • ".join(reasons)
         else:
             direction = "WAIT"
             confidence = max(call_score, put_score)
-            status = "FILTERED (<85%)"
-            final_reason = "85% confluence not met across 4-layer logic. Trade paused to preserve capital."
+            status = "FILTERED (<75%)"
+            final_reason = "75% confluence not met across 4-layer logic. Trade paused to preserve capital."
+
 
         bd_tz = pytz.timezone('Asia/Dhaka')
         now = datetime.now(bd_tz)
